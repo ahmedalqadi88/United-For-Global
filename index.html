@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untied For Global </title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            background: rgba(87, 85, 85, 0.09);        }
+        .navbar-brand img {
+            width: 100px;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+        }
+        .step-content {
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-next {
+            margin-top: 20px;
+        }
+        .progress-circle {
+            margin-left: auto;
+            margin-right: auto;
+    width: 300px;
+    height: 300px;
+    border: 20px solid #007bff; /* Background circle color */
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-circle::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* background: #ffffff; */
+    /* Ensure this matches the background color to cover the border */
+    clip-path: circle(50% at 50% 50%);
+}
+
+.progress-text {
+    position: relative;
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" href="#">
+            <img src="./assets/images/451088665_352254551263771_1895592340387252779_n-removebg-preview.png" alt="Brand Image">
+        </a>
+    </nav>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="step1" class="step active">
+                        <div class="step-content">
+                            <h2>Choose Price</h2>
+                            <form id="price-form">
+                                <div class="mb-3">
+                                    <label for="price" class="form-label">Select Price</label>
+                                    <select id="price" class="form-select">
+                                        <option value="50">$50</option>
+                                        <option value="100">$100</option>
+                                        <option value="150">$150</option>
+                                        <option value="150">other amount</option>
+
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">Next</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="step2" class="step">
+                        <div class="step-content">
+                            <h2>Personal Information</h2>
+                            <form id="info-form">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                                </div>
+                                <button type="button" class="btn btn-primary btn-next" onclick="previousStep()">Back</button>
+                                <button type="submit" class="btn btn-primary btn-next">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" style="    padding: 20px;
+            background: #fff;">
+                        <div class="progress-circle text-center">
+                            <span class="progress-text" style="text-align: center;color: #000;font-size: 20px;">$19,435,873.07 <br>
+                                RAISED OF $20,000,000.00 <br>
+                                99% RAISED <br>
+                                88217 DONORS</span>
+                        </div>
+                    
+                    <h1 style="font-size: 30px; font-weight: bold" class="mt-3 text-center mb-3">DONATE NOW 💙</h1>
+                    <p style="font-size: 14px;font-weight: normal;word-break: break-all;">
+                        We here at United for Global are trying to achieve justice among people and establish human rights in the best possible way. We always strive for the well-being of citizens all over the world. Through your donations, we have achieved the entry of more than 145,000 thousand students into school and the establishment of 27 thousand schools around the world in addition. To the orphanage, the shelter, the water and gas wells, the roofs of houses and homes for refugees. With your help, we will reach the dream that we have always dreamed of, which is to live in a world filled with peace, love and goodness.                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentStep = 1;
+        
+        function showStep(step) {
+            document.querySelectorAll('.step').forEach(s => {
+                if (s.id === 'step' + step) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        }
+        
+        function nextStep() {
+            currentStep++;
+            showStep(currentStep);
+        }
+        
+        function previousStep() {
+            currentStep--;
+            showStep(currentStep);
+        }
+    </script>
+</body>
+</html>
