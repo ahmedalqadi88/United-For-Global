@@ -1,3 +1,22 @@
-img{
-    width: 100% !important;
-}
+
+/* .navbar-brand img{
+    width: 200px !important;
+} */
+body {
+    background: rgba(87, 85, 85, 0.09);
+    transition: background 0.3s ease; /* Adjust the duration and timing function as needed */
+
+  }
+@media only screen and (max-width: 768px) {
+   .step-content{
+    margin-top: 50px;
+    margin-bottom: 100px;
+   }
+   .logo{
+    position: relative;
+
+    left: 40% !important;
+   }
+ 
+  }
+  
