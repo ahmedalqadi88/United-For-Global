@@ -1,150 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untied For Global </title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untied For Global</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
     <style>
-        body{
-            background: rgba(87, 85, 85, 0.09);        }
-        .navbar-brand img {
-            width: 100px;
-        }
-        .step {
-            display: none;
-        }
-        .step.active {
-            display: block;
-        }
-        .step-content {
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .btn-next {
-            margin-top: 20px;
-        }
-        .progress-circle {
-            margin-left: auto;
-            margin-right: auto;
-    width: 300px;
-    height: 300px;
-    border: 20px solid #007bff; /* Background circle color */
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.progress-circle::after {
-    content: '';
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    /* background: #ffffff; */
-    /* Ensure this matches the background color to cover the border */
-    clip-path: circle(50% at 50% 50%);
-}
-
-.progress-text {
-    position: relative;
-    font-size: 24px;
-    font-weight: bold;
-    color: #007bff;
-}
+    
+      .navbar-brand img {
+        width: 100px;
+      }
+      .step {
+        display: none;
+      }
+      .step.active {
+        display: block;
+      }
+      .step-content {
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .btn-next {
+        margin-top: 20px;
+      }
+      .progress-circle {
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        height: 300px;
+        border: 20px solid #007bff; /* Background circle color */
+        border-radius: 50%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .progress-circle::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        /* background: #ffffff; */
+        /* Ensure this matches the background color to cover the border */
+        clip-path: circle(50% at 50% 50%);
+      }
+      .progress-text {
+        position: relative;
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+      }
+      .custom-amount {
+        display: none;
+      }
     </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg ">
-        <a class="navbar-brand" href="#">
-            <img src="./assets/images/451088665_352254551263771_1895592340387252779_n-removebg-preview.png" alt="Brand Image">
-        </a>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">
+        <img
+        class="logo"
+          style="width: 200px; height: auto; position: relative; left: 50px"
+          src="./assets/images/Picsart_24-08-06_21-31-53-275.png"
+          alt="Brand Image"
+        />
+      </a>
     </nav>
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="step1" class="step active">
-                        <div class="step-content">
-                            <h2>Choose Price</h2>
-                            <form id="price-form">
-                                <div class="mb-3">
-                                    <label for="price" class="form-label">Select Price</label>
-                                    <select id="price" class="form-select">
-                                        <option value="50">$50</option>
-                                        <option value="100">$100</option>
-                                        <option value="150">$150</option>
-                                        <option value="150">other amount</option>
-
-                                    </select>
-                                </div>
-                                <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">Next</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div id="step2" class="step">
-                        <div class="step-content">
-                            <h2>Personal Information</h2>
-                            <form id="info-form">
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" id="name" class="form-control" placeholder="Enter your name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" id="email" class="form-control" placeholder="Enter your email">
-                                </div>
-                                <button type="button" class="btn btn-primary btn-next" onclick="previousStep()">Back</button>
-                                <button type="submit" class="btn btn-primary btn-next">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6" style="    padding: 20px;
-            background: #fff;">
-                        <div class="progress-circle text-center">
-                            <span class="progress-text" style="text-align: center;color: #000;font-size: 20px;">$19,435,873.07 <br>
-                                RAISED OF $20,000,000.00 <br>
-                                99% RAISED <br>
-                                88217 DONORS</span>
-                        </div>
-                    
-                    <h1 style="font-size: 30px; font-weight: bold" class="mt-3 text-center mb-3">DONATE NOW 💙</h1>
-                    <p style="font-size: 14px;font-weight: normal;word-break: break-all;">
-                        We here at United for Global are trying to achieve justice among people and establish human rights in the best possible way. We always strive for the well-being of citizens all over the world. Through your donations, we have achieved the entry of more than 145,000 thousand students into school and the establishment of 27 thousand schools around the world in addition. To the orphanage, the shelter, the water and gas wells, the roofs of houses and homes for refugees. With your help, we will reach the dream that we have always dreamed of, which is to live in a world filled with peace, love and goodness.                    </p>
-                </div>
+      <div class="container">
+        <div class=" row">
+          <div class="col-md-6 move">
+            <div id="step1" class="step active">
+              <div class="step-content">
+                <h2>Choose Price</h2>
+                <form id="price-form">
+                  <div class="mb-3">
+                    <label for="price" class="form-label">Select Price</label>
+                    <select
+                      id="price"
+                      class="form-select"
+                      onchange="toggleCustomAmount()"
+                    >
+                      <option value="50">$50</option>
+                      <option value="100">$100</option>
+                      <option value="150">$150</option>
+                      <option value="other">other amount</option>
+                    </select>
+                  </div>
+                  <div id="custom-amount" class="custom-amount mb-3">
+                    <label for="custom-price" class="form-label">Enter Amount</label>
+                    <input
+                      type="number"
+                      id="custom-price"
+                      class="form-control"
+                      placeholder="Enter custom amount"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-next"
+                    onclick="nextStep()"
+                  >
+                    Next
+                  </button>
+                </form>
+              </div>
             </div>
+            <div id="step2" class="step">
+              <div class="step-content">
+                <h2>Personal Information</h2>
+                <form id="info-form">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      class="form-control"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      class="form-control"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Country </label>
+
+                    <select
+                      id="account.address.country"
+                      name="account.address.country"
+                      class="form-select neonfront_input neon-field--donation-account-address-country"
+                      aria-describedby="account.address.country_feedback"
+                    >
+                      <option></option>
+                      <option value="243">Palestine, State of</option>
+                      <option value="1">United States of America</option>
+                      <option value="2">Canada</option>
+                      <option value="3">Afghanistan</option>
+                      <option value="247">Åland Islands</option>
+                      <option value="4">Albania</option>
+                      <option value="5">Algeria</option>
+                      <option value="6">American Samoa</option>
+                      <option value="7">Andorra</option>
+                      <option value="8">Angola</option>
+                      <option value="242">Anguilla</option>
+                      <option value="9">Antarctica</option>
+                      <option value="10">Antigua and Barbuda</option>
+                      <option value="11">Argentina</option>
+                      <option value="12">Armenia</option>
+                      <option value="13">Aruba</option>
+                      <option value="14">Australia</option>
+                      <option value="15">Austria</option>
+                      <option value="16">Azerbaijan</option>
+                      <option value="17">Bahamas</option>
+                      <option value="18">Bahrain</option>
+                      <option value="19">Bangladesh</option>
+                      <option value="20">Barbados</option>
+                      <option value="21">Belarus</option>
+                      <option value="22">Belgium</option>
+                      <option value="23">Belize</option>
+                      <option value="24">Benin</option>
+                      <option value="25">Bermuda</option>
+                      <option value="26">Bhutan</option>
+                      <option value="27">
+                        Bolivia (Plurinational State of)
+                      </option>
+                      <option value="248">
+                        Bonaire, Sint Eustatius and Saba
+                      </option>
+                      <option value="28">Bosnia and Herzegovina</option>
+                      <option value="29">Botswana</option>
+                      <option value="30">Bouvet Island</option>
+                      <option value="31">Brazil</option>
+                      <option value="32">British Indian Ocean Territory</option>
+                      <option value="33">Brunei Darussalam</option>
+                      <option value="34">Bulgaria</option>
+                      <option value="35">Burkina Faso</option>
+                      <option value="36">Burundi</option>
+                      <option value="39">Cabo Verde</option>
+                      <option value="37">Cambodia</option>
+                      <option value="38">Cameroon</option>
+                      <option value="40">Cayman Islands</option>
+                      <option value="41">Central African Republic</option>
+                      <option value="42">Chad</option>
+                      <option value="43">Chile</option>
+                      <option value="44">China</option>
+                      <option value="45">Christmas Island</option>
+                      <option value="46">Cocos (Keeling) Islands</option>
+                      <option value="47">Colombia</option>
+                      <option value="48">Comoros</option>
+                      <option value="49">Congo</option>
+                      <option value="238">
+                        Congo (the Democratic Republic of the)
+                      </option>
+                      <option value="50">Cook Islands</option>
+                      <option value="51">Costa Rica</option>
+                      <option value="106">Côte d'Ivoire</option>
+                      <option value="52">Croatia</option>
+                      <option value="53">Cuba</option>
+                      <option value="249">Curaçao</option>
+                      <option value="54">Cyprus</option>
+                      <option value="55">Czechia</option>
+                      <option value="56">Denmark</option>
+                      <option value="57">Djibouti</option>
+                      <option value="58">Dominica</option>
+                      <option value="59">Dominican Republic</option>
+                      <option value="61">Ecuador</option>
+                      <option value="62">Egypt</option>
+                      <option value="63">El Salvador</option>
+                      <option value="64">Equatorial Guinea</option>
+                      <option value="65">Eritrea</option>
+                      <option value="66">Estonia</option>
+                      <option value="67">Ethiopia</option>
+                      <option value="68">Falkland Islands [Malvinas]</option>
+                      <option value="69">Faroe Islands</option>
+                      <option value="70">Fiji</option>
+                      <option value="71">Finland</option>
+                      <option value="73">France</option>
+                      <option value="75">French Guiana</option>
+                      <option value="171">French Polynesia</option>
+                      <option value="76">French Southern Territories</option>
+                      <option value="77">Gabon</option>
+                      <option value="78">Gambia</option>
+                      <option value="79">Georgia</option>
+                      <option value="80">Germany</option>
+                      <option value="81">Ghana</option>
+                      <option value="82">Gibraltar</option>
+                      <option value="84">Greece</option>
+                      <option value="85">Greenland</option>
+                      <option value="86">Grenada</option>
+                      <option value="87">Guadeloupe</option>
+                      <option value="88">Guam</option>
+                      <option value="89">Guatemala</option>
+                      <option value="250">Guernsey</option>
+                      <option value="90">Guinea</option>
+                      <option value="91">Guinea-Bissau</option>
+                      <option value="92">Guyana</option>
+                      <option value="93">Haiti</option>
+                      <option value="94">
+                        Heard Island and McDonald Islands
+                      </option>
+                      <option value="229">Holy See</option>
+                      <option value="95">Honduras</option>
+                      <option value="96">Hong Kong</option>
+                      <option value="97">Hungary</option>
+                      <option value="98">Iceland</option>
+                      <option value="99">India</option>
+                      <option value="100">Indonesia</option>
+                      <option value="101">Iran (Islamic Republic of)</option>
+                      <option value="102">Iraq</option>
+                      <option value="103">Ireland</option>
+                      <option value="251">Isle of Man</option>
+                      <option value="104">Israel</option>
+                      <option value="105">Italy</option>
+                      <option value="107">Jamaica</option>
+                      <option value="108">Japan</option>
+                      <option value="252">Jersey</option>
+                      <option value="109">Jordan</option>
+                      <option value="110">Kazakhstan</option>
+                      <option value="111">Kenya</option>
+                      <option value="112">Kiribati</option>
+                      <option value="158">
+                        Korea (the Democratic People's Republic of)
+                      </option>
+                      <option value="198">Korea (the Republic of)</option>
+                      <option value="113">Kuwait</option>
+                      <option value="114">Kyrgyzstan</option>
+                      <option value="115">
+                        Lao People's Democratic Republic
+                      </option>
+                      <option value="116">Latvia</option>
+                      <option value="117">Lebanon</option>
+                      <option value="118">Lesotho</option>
+                      <option value="119">Liberia</option>
+                      <option value="120">Libya</option>
+                      <option value="121">Liechtenstein</option>
+                      <option value="122">Lithuania</option>
+                      <option value="123">Luxembourg</option>
+                      <option value="124">Macao</option>
+                      <option value="125">
+                        Macedonia (the former Yugoslav Republic of)
+                      </option>
+                      <option value="126">Madagascar</option>
+                      <option value="127">Malawi</option>
+                      <option value="128">Malaysia</option>
+                      <option value="129">Maldives</option>
+                      <option value="130">Mali</option>
+                      <option value="131">Malta</option>
+                      <option value="132">Marshall Islands</option>
+                      <option value="133">Martinique</option>
+                      <option value="134">Mauritania</option>
+                      <option value="135">Mauritius</option>
+                      <option value="136">Mayotte</option>
+                      <option value="137">Mexico</option>
+                      <option value="138">
+                        Micronesia (Federated States of)
+                      </option>
+                      <option value="139">Moldova (the Republic of)</option>
+                      <option value="140">Monaco</option>
+                      <option value="141">Mongolia</option>
+                      <option value="253">Montenegro</option>
+                      <option value="142">Montserrat</option>
+                      <option value="143">Morocco</option>
+                      <option value="144">Mozambique</option>
+                      <option value="145">Myanmar</option>
+                      <option value="146">Namibia</option>
+                      <option value="147">Nauru</option>
+                      <option value="148">Nepal</option>
+                      <option value="149">Netherlands</option>
+                      <option value="151">New Caledonia</option>
+                      <option value="152">New Zealand</option>
+                      <option value="153">Nicaragua</option>
+                      <option value="154">Niger</option>
+                      <option value="155">Nigeria</option>
+                      <option value="156">Niue</option>
+                      <option value="157">Norfolk Island</option>
+                      <option value="159">Northern Mariana Islands</option>
+                      <option value="160">Norway</option>
+                      <option value="161">Oman</option>
+                      <option value="162">Pakistan</option>
+                      <option value="163">Palau</option>
+                      <option value="164">Panama</option>
+                      <option value="165">Papua New Guinea</option>
+                      <option value="166">Paraguay</option>
+                      <option value="167">Peru</option>
+                      <option value="168">Philippines</option>
+                      <option value="169">Pitcairn</option>
+                      <option value="170">Poland</option>
+                      <option value="172">Portugal</option>
+                      <option value="173">Puerto Rico</option>
+                      <option value="174">Qatar</option>
+                      <option value="175">Réunion</option>
+                      <option value="176">Romania</option>
+                      <option value="177">Russian Federation</option>
+                      <option value="178">Rwanda</option>
+                      <option value="254">Saint Barthélemy</option>
+                      <option value="180">
+                        Saint Helena, Ascension and Tristan da Cunha
+                      </option>
+                      <option value="181">Saint Kitts and Nevis</option>
+                      <option value="182">Saint Lucia</option>
+                      <option value="255">Saint Martin (French part)</option>
+                      <option value="183">Saint Pierre and Miquelon</option>
+                      <option value="185">
+                        Saint Vincent and the Grenadines
+                      </option>
+                      <option value="186">Samoa</option>
+                      <option value="187">San Marino</option>
+                      <option value="184">Sao Tome and Principe</option>
+                      <option value="188">Saudi Arabia</option>
+                      <option value="189">Senegal</option>
+                      <option value="256">Serbia</option>
+                      <option value="190">Seychelles</option>
+                      <option value="191">Sierra Leone</option>
+                      <option value="192">Singapore</option>
+                      <option value="246">Sint Maarten (Dutch part)</option>
+                      <option value="193">Slovakia</option>
+                      <option value="194">Slovenia</option>
+                      <option value="195">Solomon Islands</option>
+                      <option value="196">Somalia</option>
+                      <option value="197">South Africa</option>
+                      <option value="179">
+                        South Georgia and the South Sandwich Islands
+                      </option>
+                      <option value="244">South Sudan</option>
+                      <option value="199">Spain</option>
+                      <option value="200">Sri Lanka</option>
+                      <option value="201">Sudan</option>
+                      <option value="202">Suriname</option>
+                      <option value="203">Svalbard and Jan Mayen</option>
+                      <option value="204">Swaziland</option>
+                      <option value="205">Sweden</option>
+                      <option value="206">Switzerland</option>
+                      <option value="207">Syrian Arab Republic</option>
+                      <option value="209">Taiwan (Province of China)</option>
+                      <option value="208">Tajikistan</option>
+                      <option value="210">Tanzania, United Republic of</option>
+                      <option value="211">Thailand</option>
+                      <option value="60">Timor-Leste</option>
+                      <option value="212">Togo</option>
+                      <option value="213">Tokelau</option>
+                      <option value="214">Tonga</option>
+                      <option value="215">Trinidad and Tobago</option>
+                      <option value="216">Tunisia</option>
+                      <option value="217">Turkey</option>
+                      <option value="218">Turkmenistan</option>
+                      <option value="219">Turks and Caicos Islands</option>
+                      <option value="220">Tuvalu</option>
+                      <option value="221">Uganda</option>
+                      <option value="222">Ukraine</option>
+                      <option value="223">United Arab Emirates</option>
+                      <option value="83">
+                        United Kingdom of Great Britain and Northern Ireland
+                      </option>
+                      <option value="226">
+                        United States Minor Outlying Islands
+                      </option>
+                      <option value="225">Uruguay</option>
+                      <option value="227">Uzbekistan</option>
+                      <option value="228">Vanuatu</option>
+                      <option value="230">
+                        Venezuela (Bolivarian Republic of)
+                      </option>
+                      <option value="231">Viet Nam</option>
+                      <option value="232">Virgin Islands (British)</option>
+                      <option value="233">Virgin Islands (U.S.)</option>
+                      <option value="234">Wallis and Futuna</option>
+                      <option value="235">Western Sahara*</option>
+                      <option value="236">Yemen</option>
+                      <option value="239">Zambia</option>
+                      <option value="240">Zimbabwe</option>
+                    </select>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-next"
+                    onclick="previousStep()"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-next"
+                    onclick="nextStep()"
+                  >
+                    Next
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div id="step3" class="step">
+              <div class="step-content">
+                <h2>Payment Information</h2>
+                <form id="payment-form" onsubmit="handleSubmit(event)">
+                  <div class="mb-3">
+                    <label for="card-number" class="form-label">Card Number</label>
+                    <input
+                      type="text"
+                      id="card-number"
+                      class="form-control"
+                      placeholder="Enter your card number"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="expiry-date" class="form-label">Expiry Date</label>
+                    <input
+                      type="text"
+                      id="expiry-date"
+                      class="form-control"
+                      placeholder="MM/YY"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input
+                      type="text"
+                      id="cvv"
+                      class="form-control"
+                      placeholder="Enter CVV"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-next"
+                    onclick="previousStep()"
+                  >
+                    Back
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-next">
+                    Submit Payment
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" style="padding: 20px; background: #fff">
+            <div class="progress-circle text-center">
+              <span
+                class="progress-text"
+                style="text-align: center; color: #000; font-size: 20px"
+                >$19,435,873.07 <br />RAISED OF $20,000,000.00 <br />99% RAISED
+                <br />88217 DONORS</span
+              >
+            </div>
+            <h1
+              style="font-size: 30px; font-weight: bold"
+              class="mt-3 text-center mb-3"
+            >
+              DONATE NOW 💙
+            </h1>
+            <p
+              style="
+                font-size: 14px;
+                font-weight: normal;
+                word-break: break-all;
+              "
+            >
+              We here at United for Global are trying to achieve justice among
+              people and establish human rights in the best possible way. We
+              always strive for the well-being of citizens all over the world.
+              Through your donations, we have achieved the entry of more than
+              145,000 thousand students into school and the establishment of 27
+              thousand schools around the world in addition. To the orphanage,
+              the shelter, the water and gas wells, the roofs of houses and
+              homes for refugees. With your help, we will reach the dream that
+              we have always dreamed of, which is to live in a world filled with
+              peace, love and goodness.
+            </p>
+            <img
+              style="width: 100%; border-radius: 10px"
+              src="./assets/images/Picsart_24-08-06_21-21-58-562.jpg"
+              alt=""
+            />
+            <p class="mt-3">
+              Children all over the world are suffering, and our role at United
+              for Global is to make them a better life without diseases or
+              epidemics. It is not only about children, but people also suffer,
+              and that is why we want to provide them with a better life and we
+              ask you to donate and help us provide the best.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        let currentStep = 1;
-        
-        function showStep(step) {
-            document.querySelectorAll('.step').forEach(s => {
-                if (s.id === 'step' + step) {
-                    s.classList.add('active');
-                } else {
-                    s.classList.remove('active');
-                }
-            });
+      let currentStep = 1;
+      const totalSteps = 3; // Update this to the total number of steps
+
+      function showStep(step) {
+        document.querySelectorAll(".step").forEach((s) => {
+          if (s.id === "step" + step) {
+            s.classList.add("active");
+          } else {
+            s.classList.remove("active");
+          }
+        });
+      }
+
+      function nextStep() {
+        if (currentStep < totalSteps) {
+          currentStep++;
+          showStep(currentStep);
         }
-        
-        function nextStep() {
-            currentStep++;
-            showStep(currentStep);
+      }
+
+      function previousStep() {
+        if (currentStep > 1) {
+          currentStep--;
+          showStep(currentStep);
         }
-        
-        function previousStep() {
-            currentStep--;
-            showStep(currentStep);
+      }
+
+      function toggleCustomAmount() {
+        const priceSelect = document.getElementById("price");
+        const customAmountDiv = document.getElementById("custom-amount");
+
+        if (priceSelect.value === "other") {
+          customAmountDiv.style.display = "block";
+        } else {
+          customAmountDiv.style.display = "none";
         }
+      }
+
+      function handleSubmit(event) {
+        event.preventDefault(); // Prevent form submission
+        alert('You have successfully submitted the payment!');
+      }
     </script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+  </body>
 </html>
